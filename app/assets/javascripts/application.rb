@@ -1,13 +1,17 @@
 require 'opal'
 require 'clearwater'
 
-class Layout
-  include Clearwater::Component
+require 'db_monster'
 
-  def render
-    div 'Hello, Clearwater!'
-  end
+app = Clearwater::Application.new(
+  component: DBMonster.new,
+  element: $document['#app'],
+)
+app.call
+
+rerender = proc do
+  app.render
+  animation_frame { rerender.call }
 end
 
-app = Clearwater::Application.new(component: Layout.new)
-app.call
+rerender.call

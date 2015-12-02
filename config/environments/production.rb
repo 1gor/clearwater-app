@@ -74,6 +74,12 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
+  config.opal.method_missing      = true
+  config.opal.optimized_operators = true
+  config.opal.arity_check         = false
+  config.opal.const_missing       = true
+  config.opal.dynamic_require_severity = :ignore
+
+  # Enable/disable /opal_specs route
+  config.opal.enable_specs = false
 end
