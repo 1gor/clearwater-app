@@ -12,14 +12,13 @@ class DBMonster
 
   def render
     table({ class_name: 'table table-striped latest-data' }, [
-      tbody([
-        Array.new(rows) { |row|
+      tbody(Array.new(rows) { |row|
           [
             Database.new("cluster#{row}"),
             Database.new("cluster#{row}slave"),
           ]
         },
-      ]),
+      ),
     ])
   end
 end
