@@ -11,7 +11,7 @@ class Query
 
   def render
     td({ class_name: "Query elapsed #{class_name}" }, [
-      elapsed_time && elapsed_time.round(2),
+      span(elapsed_time && elapsed_time.round(2)),
       div({ class_name: 'popover left' }, [
         div({ class_name: 'popover-content' }, query),
         div({ class_name: 'arrow' }),
